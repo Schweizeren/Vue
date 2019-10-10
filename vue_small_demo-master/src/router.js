@@ -27,7 +27,7 @@ export default new Router({
       component: WeedCreate
     },
     {
-      path: '/weedUpdate',
+      path: '/weedUpdate/:id',
       name: 'weedUpdate',
       component: WeedUpdate
     },

@@ -56,11 +56,9 @@
                                         md="2"
                                         offset-md="10">
 
-                                    <router-link to="/Weed" tag="button">
                                         <v-btn text v-on:click="Create()">
                                             Create
                                         </v-btn>
-                                    </router-link>
 
 
                                 </v-col>
@@ -92,9 +90,9 @@
 
                 Types:
                     [
-                        {Id: 1, TypeName: 'Hybrid'},
-                        {Id: 2, TypeName: 'Sativa'},
-                        {Id: 3, TypeName: 'Indica'}
+                        {Id: 19, TypeName: 'Hybrid'},
+                        {Id: 20, TypeName: 'Sativa'},
+                        {Id: 21, TypeName: 'Indica'}
                     ],
 
                 Ratings: [
@@ -105,13 +103,13 @@
 
         methods: {
             Create() {
-                const baseURI = 'http://db-weedshop-jwh-dk-easv.azurewebsites.net/api/weeds'
+                const baseURI = 'https://db-weedshop-jwh-dk-easv.azurewebsites.net/api/weeds'
                 axios.post(baseURI, {
                     Name: this.WeedObject.Name,
                     Type: this.Types.filter(t => t.TypeName === this.WeedObject.Type)[0],
                     Weight: +this.WeedObject.Weight,
                     Price: +this.WeedObject.Price,
-                    Description: this.Description,
+                    Description: this.WeedObject.Description,
                     Rating: +this.WeedObject.Rating
                 })
             },

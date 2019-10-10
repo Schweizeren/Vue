@@ -81,13 +81,15 @@
     import axios from 'axios'
     export default {
         mounted() {
-
+            this.fetchProduct()
         },
 
         data() {
             return {
+                id: this.$route.params.id,
                 valid:true,
                 WeedObject: {
+                    Id: this.id,
                     Name: '',
                     Type: {
                         Id: 0,
@@ -101,9 +103,9 @@
 
                 Types:
                     [
-                        {Id: 1, TypeName: 'Hybrid'},
-                        {Id: 2, TypeName: 'Sativa'},
-                        {Id: 3, TypeName: 'Indica'}
+                        {Id: 19, TypeName: 'Hybrid'},
+                        {Id: 20, TypeName: 'Sativa'},
+                        {Id: 21, TypeName: 'Indica'}
                     ],
 
                 Ratings: [
@@ -113,15 +115,20 @@
         },
         methods: {
             Update() {
-                const baseURI = ('http://db-weedshop-jwh-dk-easv.azurewebsites.net/api/weeds/72')
+                const baseURI = ('https://db-weedshop-jwh-dk-easv.azurewebsites.net/api/weeds/' + this.id)
                 axios.put(baseURI, {
+                    Id: this.id,
                     Name: this.WeedObject.Name,
                     Type: this.Types.filter(t => t.TypeName === this.WeedObject.Type)[0],
                     Weight: +this.WeedObject.Weight,
                     Price: +this.WeedObject.Price,
-                    Description: this.Description,
+                    Description: this.WeedObject.Description,
                     Rating: +this.WeedObject.Rating
                 })
+            },
+            fetchProduct() {
+                axios.get('https://db-weedshop-jwh-dk-easv.azurewebsites.net/api/weeds/' + this.id)
+
             }
         }
     };

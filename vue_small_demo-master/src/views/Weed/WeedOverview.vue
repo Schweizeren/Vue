@@ -40,9 +40,9 @@
 
                                     <v-list-item-action>
                                         <v-col>
-                                            <router-link to="/WeedUpdate" tag="button">
+                                            <v-btn v-on:click="updateWeed(weed)" icon>
                                                 <v-icon color="grey lighten-1">mdi-circle-edit-outline</v-icon>
-                                            </router-link>
+                                            </v-btn>
                                             <v-btn v-on:click="deleteWeed(weed)" icon>
                                                 <v-icon color="grey lighten-1">mdi-minus-circle-outline</v-icon>
                                             </v-btn>
@@ -102,6 +102,9 @@
                 }
 
 
+            },
+            updateWeed(weed) {
+                window.location.href = 'http://localhost:8080/weedUpdate/' + weed.id
             }
         }
     };
