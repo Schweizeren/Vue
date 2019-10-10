@@ -59,11 +59,9 @@
                                     WeedObject.Description.length.valueOf() &&
                                     WeedObject.Name.length.valueOf() &&
                                     WeedObject.Weight.length.valueOf()" >
-                                        <router-link to="/Weed" tag="button">
                                             <v-btn text v-on:click="Update()">
                                                 <v-icon>mdi-content-save-outline </v-icon>
                                                 Update</v-btn>
-                                        </router-link>
                                     </h1>
 
                                 </v-col>
@@ -114,9 +112,9 @@
             }
         },
         methods: {
-            Update() {
+            async Update() {
                 const baseURI = ('https://db-weedshop-jwh-dk-easv.azurewebsites.net/api/weeds/' + this.id)
-                axios.put(baseURI, {
+                let result = await axios.put(baseURI, {
                     Id: this.id,
                     Name: this.WeedObject.Name,
                     Type: this.Types.filter(t => t.TypeName === this.WeedObject.Type)[0],
@@ -125,10 +123,11 @@
                     Description: this.WeedObject.Description,
                     Rating: +this.WeedObject.Rating
                 })
-            },
-            fetchProduct() {
-                axios.get('https://db-weedshop-jwh-dk-easv.azurewebsites.net/api/weeds/' + this.id)
+                if(result.status !== 200) {
 
+                }else {
+                    window.location.href = 'http://localhost:8080/Weed'
+                }
             }
         }
     };

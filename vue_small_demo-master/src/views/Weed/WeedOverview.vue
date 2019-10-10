@@ -105,6 +105,7 @@
             },
             updateWeed(weed) {
                 window.location.href = 'http://localhost:8080/weedUpdate/' + weed.id
+                this.fetchWeeds()
             }
         }
     };
