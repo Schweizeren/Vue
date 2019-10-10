@@ -55,16 +55,13 @@
                                 <v-col
                                         md="2"
                                         offset-md="10">
-                                    <h1 v-if= "WeedObject.Price.length.valueOf() &&
-                                    WeedObject.Description.length.valueOf() &&
-                                    WeedObject.Name.length.valueOf() &&
-                                    WeedObject.Weight.length.valueOf()" >
+
                                     <router-link to="/Weed" tag="button">
                                         <v-btn text v-on:click="Create()">
                                             Create
                                         </v-btn>
                                     </router-link>
-                                    </h1>
+
 
                                 </v-col>
                             </v-row>
